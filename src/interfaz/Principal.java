@@ -27,17 +27,97 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtDenominadorUno = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtNumeradorUno = new javax.swing.JTextField();
+        cmbOperaciones = new javax.swing.JComboBox<>();
+        txtNumeradorDos = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtDenominadorDos = new javax.swing.JTextField();
+        txtNumeradorTres = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        txtDenominadorTres = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        cmdConvertir = new javax.swing.JButton();
+        txtNumeradorCuatro = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtDenominadorCuatro = new javax.swing.JTextField();
+        txtEntero = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        cmdLimpiar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Operaciones Con Fraccionarios");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 40));
+        jPanel1.add(txtDenominadorUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 60, 100));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 242, 80, 20));
+        jPanel1.add(txtNumeradorUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 60, 100));
+
+        cmbOperaciones.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "*", "/" }));
+        jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
+        jPanel1.add(txtNumeradorDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 60, 100));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 80, 20));
+        jPanel1.add(txtDenominadorDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 60, 100));
+        jPanel1.add(txtNumeradorTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 60, 100));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, 20));
+        jPanel1.add(txtDenominadorTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 60, 100));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        jLabel2.setText("=");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Numero Mixto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(255, 0, 0))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmdConvertir.setBackground(new java.awt.Color(0, 0, 204));
+        cmdConvertir.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        cmdConvertir.setForeground(new java.awt.Color(255, 255, 255));
+        cmdConvertir.setText("Convertir");
+        jPanel2.add(cmdConvertir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 263, 120, 40));
+        jPanel2.add(txtNumeradorCuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 30, 60));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, -1));
+        jPanel2.add(txtDenominadorCuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 30, 60));
+        jPanel2.add(txtEntero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 30, 60));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 140, 320));
+
+        cmdCalcular.setBackground(new java.awt.Color(0, 0, 204));
+        cmdCalcular.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        cmdCalcular.setForeground(new java.awt.Color(255, 255, 255));
+        cmdCalcular.setText("Calcular");
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 120, 40));
+
+        cmdLimpiar.setBackground(new java.awt.Color(0, 0, 204));
+        cmdLimpiar.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        cmdLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        cmdLimpiar.setText("Limpiar");
+        jPanel1.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 120, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/geometry-interfaces-deus-ex-human-revolution-deus-ex-penrose-triangle-1920x1080.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +159,27 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbOperaciones;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JButton cmdConvertir;
+    private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField txtDenominadorCuatro;
+    private javax.swing.JTextField txtDenominadorDos;
+    private javax.swing.JTextField txtDenominadorTres;
+    private javax.swing.JTextField txtDenominadorUno;
+    private javax.swing.JTextField txtEntero;
+    private javax.swing.JTextField txtNumeradorCuatro;
+    private javax.swing.JTextField txtNumeradorDos;
+    private javax.swing.JTextField txtNumeradorTres;
+    private javax.swing.JTextField txtNumeradorUno;
     // End of variables declaration//GEN-END:variables
 }
