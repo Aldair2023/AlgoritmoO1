@@ -216,33 +216,36 @@ public class Principal extends javax.swing.JFrame {
                     case 3:
                         f3 = f1.division(f2);
                         break;
-
                 }
+
+                if (f3.getNumerador() < 0 && f3.getDenominador() < 0) {
+                    n3 = f3.getNumerador() * -1;
+                    d3 = f3.getDenominador() * -1;
+                } else {
+                    n3 = f3.getNumerador();
+                    d3 = f3.getDenominador();
+                }
+                txtNumeradorTres.setText("" + n3);
+                txtDenominadorTres.setText("" + d3);
+
+                if (n3 < d3) {
+                    JOptionPane.showMessageDialog(this, "No se puede convertir en un numero mixto, el numerador debe ser mayor al denominador", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    txtEntero.setText("");
+                    txtNumeradorCuatro.setText("");
+                    txtDenominadorCuatro.setText("");
+                } else {
+                    txtEntero.setText("" + n3 / d3);
+                    txtNumeradorCuatro.setText("" + n3 % d3);
+                    txtDenominadorCuatro.setText("" + d3);
+                }
+
                 txtNumeradorTres.setText("" + f3.getNumerador());
                 txtDenominadorTres.setText("" + f3.getDenominador());
             } catch (DenominadorCeroException k) {
                 JOptionPane.showMessageDialog(null, k.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException k) {
+                JOptionPane.showMessageDialog(null, "hay errores en algunos numeros, por favor corregirlos", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
-            if(f3.getNumerador() < 0 && f3.getDenominador() < 0){
-                n3 = f3.getNumerador() * -1;
-                d3 = f3.getDenominador()* -1;
-            }else{
-                n3 = f3.getNumerador();
-                d3 = f3.getDenominador();
-            }
-                txtNumeradorTres.setText(""+n3);
-                txtDenominadorTres.setText(""+d3);
-           
-                if(n3 < d3){
-                    JOptionPane.showMessageDialog(this,"No se puede convertir en un numero mixto, el numerador debe ser mayor al denominador", "ERROR",JOptionPane.ERROR_MESSAGE);
-                    txtEntero.setText("");
-                    txtNumeradorCuatro.setText("");
-                    txtDenominadorCuatro.setText("");
-                }else{
-                    txtEntero.setText(""+n3/d3);
-                    txtNumeradorCuatro.setText(""+n3%d3);
-                    txtDenominadorCuatro.setText(""+d3);
-                }
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -260,7 +263,7 @@ public class Principal extends javax.swing.JFrame {
         txtEntero.setText("");
         txtNumeradorUno.requestFocusInWindow();
         cmbOperaciones.setSelectedIndex(0);
-        
+
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void txtNumeradorUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeradorUnoActionPerformed
