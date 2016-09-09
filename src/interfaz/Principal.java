@@ -5,6 +5,10 @@
  */
 package interfaz;
 
+import clase.DenominadorCeroException;
+import clase.Fraccionario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aldair
@@ -16,6 +20,9 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        txtNumeradorUno.requestFocusInWindow();
+
     }
 
     /**
@@ -41,7 +48,6 @@ public class Principal extends javax.swing.JFrame {
         txtDenominadorTres = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        cmdConvertir = new javax.swing.JButton();
         txtNumeradorCuatro = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         txtDenominadorCuatro = new javax.swing.JTextField();
@@ -57,19 +63,52 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Operaciones Con Fraccionarios");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 560, 40));
+
+        txtDenominadorUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominadorUnoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominadorUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 60, 100));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 242, 80, 20));
+
+        txtNumeradorUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeradorUnoActionPerformed(evt);
+            }
+        });
+        txtNumeradorUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeradorUnoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeradorUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 60, 100));
 
         cmbOperaciones.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "*", "/" }));
         jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
+
+        txtNumeradorDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeradorDosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeradorDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 60, 100));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 80, 20));
+
+        txtDenominadorDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominadorDosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominadorDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 60, 100));
+
+        txtNumeradorTres.setEditable(false);
         jPanel1.add(txtNumeradorTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 60, 100));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, 20));
+
+        txtDenominadorTres.setEditable(false);
         jPanel1.add(txtDenominadorTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 60, 100));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -79,29 +118,39 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Numero Mixto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(255, 0, 0))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmdConvertir.setBackground(new java.awt.Color(0, 0, 204));
-        cmdConvertir.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        cmdConvertir.setForeground(new java.awt.Color(255, 255, 255));
-        cmdConvertir.setText("Convertir");
-        jPanel2.add(cmdConvertir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 263, 120, 40));
+        txtNumeradorCuatro.setEditable(false);
         jPanel2.add(txtNumeradorCuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 30, 60));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, -1));
+
+        txtDenominadorCuatro.setEditable(false);
         jPanel2.add(txtDenominadorCuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 30, 60));
+
+        txtEntero.setEditable(false);
         jPanel2.add(txtEntero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 30, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 140, 320));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 140, 270));
 
         cmdCalcular.setBackground(new java.awt.Color(0, 0, 204));
         cmdCalcular.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         cmdCalcular.setForeground(new java.awt.Color(255, 255, 255));
         cmdCalcular.setText("Calcular");
-        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 120, 40));
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 120, 40));
 
         cmdLimpiar.setBackground(new java.awt.Color(0, 0, 204));
         cmdLimpiar.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         cmdLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         cmdLimpiar.setText("Limpiar");
-        jPanel1.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 120, 40));
+        cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 120, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaz/geometry-interfaces-deus-ex-human-revolution-deus-ex-penrose-triangle-1920x1080.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -122,6 +171,148 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        // TODO add your handling code here:
+
+        int op, n1, d1, n2, d2, n3, d3;
+        Fraccionario f1, f2, f3 = null;
+
+        if (txtNumeradorUno.getText().trim().isEmpty() && txtDenominadorUno.getText().trim().isEmpty() && txtNumeradorDos.getText().trim().isEmpty() && txtDenominadorDos.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "por favor LLENE los campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else if (txtDenominadorUno.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else if (txtNumeradorDos.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else if (txtDenominadorDos.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else if (txtNumeradorUno.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            op = cmbOperaciones.getSelectedIndex();
+            n1 = Integer.parseInt(txtNumeradorUno.getText());
+            d1 = Integer.parseInt(txtDenominadorUno.getText());
+            n2 = Integer.parseInt(txtNumeradorDos.getText());
+            d2 = Integer.parseInt(txtDenominadorDos.getText());
+
+            try {
+                f1 = new Fraccionario(n1, d1);
+                f2 = new Fraccionario(n2, d2);
+
+                switch (op) {
+                    case 0:
+                        f3 = f1.sumar(f2);
+                        break;
+
+                    case 1:
+                        f3 = f1.restar(f2);
+                        break;
+
+                    case 2:
+                        f3 = f1.multiplicar(f2);
+                        break;
+
+                    case 3:
+                        f3 = f1.division(f2);
+                        break;
+
+                }
+                txtNumeradorTres.setText("" + f3.getNumerador());
+                txtDenominadorTres.setText("" + f3.getDenominador());
+            } catch (DenominadorCeroException k) {
+                JOptionPane.showMessageDialog(null, k.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            if(f3.getNumerador() < 0 && f3.getDenominador() < 0){
+                n3 = f3.getNumerador() * -1;
+                d3 = f3.getDenominador()* -1;
+            }else{
+                n3 = f3.getNumerador();
+                d3 = f3.getDenominador();
+            }
+                txtNumeradorTres.setText(""+n3);
+                txtDenominadorTres.setText(""+d3);
+           
+                if(n3 < d3){
+                    JOptionPane.showMessageDialog(this,"No se puede convertir en un numero mixto, el numerador debe ser mayor al denominador", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    txtEntero.setText("");
+                    txtNumeradorCuatro.setText("");
+                    txtDenominadorCuatro.setText("");
+                }else{
+                    txtEntero.setText(""+n3/d3);
+                    txtNumeradorCuatro.setText(""+n3%d3);
+                    txtDenominadorCuatro.setText(""+d3);
+                }
+        }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
+        // TODO add your handling code here:
+
+        txtNumeradorUno.setText("");
+        txtNumeradorDos.setText("");
+        txtDenominadorUno.setText("");
+        txtDenominadorDos.setText("");
+        txtNumeradorTres.setText("");
+        txtDenominadorTres.setText("");
+        txtNumeradorCuatro.setText("");
+        txtDenominadorCuatro.setText("");
+        txtEntero.setText("");
+        txtNumeradorUno.requestFocusInWindow();
+        cmbOperaciones.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void txtNumeradorUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeradorUnoActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_txtNumeradorUnoActionPerformed
+
+    private void txtNumeradorUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeradorUnoKeyTyped
+        // TODO add your handling code here:
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '-') {
+            getToolkit();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeradorUnoKeyTyped
+
+    private void txtDenominadorUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominadorUnoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '-') {
+            getToolkit();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDenominadorUnoKeyTyped
+
+    private void txtNumeradorDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeradorDosKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '-') {
+            getToolkit();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeradorDosKeyTyped
+
+    private void txtDenominadorDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominadorDosKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '-') {
+            getToolkit();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDenominadorDosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -161,7 +352,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbOperaciones;
     private javax.swing.JButton cmdCalcular;
-    private javax.swing.JButton cmdConvertir;
     private javax.swing.JButton cmdLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
