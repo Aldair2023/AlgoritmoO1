@@ -174,29 +174,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
         // TODO add your handling code here:
+        try {
+            int op, n1, d1, n2, d2, n3, d3;
+            Fraccionario f1, f2, f3 = null;
 
-        int op, n1, d1, n2, d2, n3, d3;
-        Fraccionario f1, f2, f3 = null;
+            if (txtNumeradorUno.getText().trim().isEmpty() && txtDenominadorUno.getText().trim().isEmpty() && txtNumeradorDos.getText().trim().isEmpty() && txtDenominadorDos.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "por favor LLENE los campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (txtDenominadorUno.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (txtNumeradorDos.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (txtDenominadorDos.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (txtNumeradorUno.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
 
-        if (txtNumeradorUno.getText().trim().isEmpty() && txtDenominadorUno.getText().trim().isEmpty() && txtNumeradorDos.getText().trim().isEmpty() && txtDenominadorDos.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "por favor LLENE los campos vacios", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (txtDenominadorUno.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (txtNumeradorDos.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (txtDenominadorDos.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "por favor agrege el denominador en la segunda fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (txtNumeradorUno.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "por favor agrege el numerador en la primera fraccion", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
+                op = cmbOperaciones.getSelectedIndex();
+                n1 = Integer.parseInt(txtNumeradorUno.getText());
+                d1 = Integer.parseInt(txtDenominadorUno.getText());
+                n2 = Integer.parseInt(txtNumeradorDos.getText());
+                d2 = Integer.parseInt(txtDenominadorDos.getText());
 
-            op = cmbOperaciones.getSelectedIndex();
-            n1 = Integer.parseInt(txtNumeradorUno.getText());
-            d1 = Integer.parseInt(txtDenominadorUno.getText());
-            n2 = Integer.parseInt(txtNumeradorDos.getText());
-            d2 = Integer.parseInt(txtDenominadorDos.getText());
-
-            try {
                 f1 = new Fraccionario(n1, d1);
                 f2 = new Fraccionario(n2, d2);
 
@@ -229,10 +228,12 @@ public class Principal extends javax.swing.JFrame {
                 txtDenominadorTres.setText("" + d3);
 
                 if (n3 < d3) {
-                    JOptionPane.showMessageDialog(this, "No se puede convertir en un numero mixto, el numerador debe ser mayor al denominador", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "No se puede convertir en un numero mixto, por que es el numerador en la fraccion resultante"
+                            + " debe ser mayor al denominador", "ERROR", JOptionPane.ERROR_MESSAGE);
                     txtEntero.setText("");
                     txtNumeradorCuatro.setText("");
                     txtDenominadorCuatro.setText("");
+
                 } else {
                     txtEntero.setText("" + n3 / d3);
                     txtNumeradorCuatro.setText("" + n3 % d3);
@@ -241,12 +242,14 @@ public class Principal extends javax.swing.JFrame {
 
                 txtNumeradorTres.setText("" + f3.getNumerador());
                 txtDenominadorTres.setText("" + f3.getDenominador());
-            } catch (DenominadorCeroException k) {
-                JOptionPane.showMessageDialog(null, k.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            } catch (NumberFormatException k) {
-                JOptionPane.showMessageDialog(null, "hay errores en algunos numeros, por favor corregirlos", "ERROR", JOptionPane.WARNING_MESSAGE);
+
             }
+        } catch (DenominadorCeroException k) {
+            JOptionPane.showMessageDialog(null, k.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException k) {
+            JOptionPane.showMessageDialog(null, "hay errores en algunos numeros, por favor corregirlos", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
+
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
